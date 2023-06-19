@@ -2,6 +2,7 @@ package com.andrius.library_manager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -33,11 +34,22 @@ public class MainWindow extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onAddButtonClicked();
+
             }
+        });
 
-
+        newBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainWindow.this, NewBook.class);
+                startActivity(intent);
+            }
         });
     }
+
+
+
+
     private void onAddButtonClicked() {
         setVisibility(clicked);
         setAnimation();

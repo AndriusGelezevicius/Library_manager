@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Library_manager</string>
+    <string name="Description">Descrption</string>
+    <string name="language">Language</string>
+    <string name="page_number">Page number</string>
+    <string name="Year_published">Year published</string>
+    <string name="genre">Genre</string>
+    <string name="author_of_book">Author of book</string>
+    <string name="title_of_book">Title of book</string>
 </resources>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewBook"
+    android:background="@drawable/bg_project"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="20dp"
+            android:paddingTop="30dp">
+            <EditText
+                android:id="@+id/titleField"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:background="@drawable/custum_input"
+                android:hint="@string/title_of_book"
+                android:paddingLeft="10dp"
+                tools:ignore="RtlSymmetry" />
+            <EditText
+                android:id="@+id/authorField"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/titleField"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custum_input"
+                android:hint="@string/author_of_book"
+                android:paddingLeft="10dp"
+                tools:ignore="RtlSymmetry" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="20dp" >
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/photo_book"
+                android:clickable="true"
+                android:background="@android:color/transparent" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:layout_below="@id/top_layout"
+        >
+        <EditText
+            android:id="@+id/genreField"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/custum_input"
+            android:hint="@string/genre"
+            android:paddingLeft="20dp" />
+        <LinearLayout
+            android:id="@+id/numbersLayout"
+            android:layout_below="@id/genreField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="20dp"
+            >
+            <EditText
+                android:id="@+id/yearField"
+                android:layout_width="170dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/custum_input"
+                android:hint="@string/Year_published"
+                android:paddingLeft="20dp"
+                android:inputType="number"/>
+            <EditText
+                android:id="@+id/pageField"
+                android:layout_width="170dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/custum_input"
+                android:hint="@string/page_number"
+                android:paddingLeft="20dp"
+                android:inputType="number"/>
+        </LinearLayout>
+
+        <EditText
+            android:layout_below="@id/numbersLayout"
+            android:id="@+id/languageField"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/custum_input"
+            android:hint="@string/language"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/descriptionField"
+            android:layout_below="@id/languageField"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/custum_input"
+            android:hint="@string/Description"
+            android:gravity="top"
+            android:padding="20dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:text="Save"
+            android:backgroundTint="#99B4B9ED"
+            android:textColor="#DD6E6F7A"
+            />
+        <Button
+            android:id="@+id/cancleButton"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:text="Cancel"
+            android:backgroundTint="#99B4B9ED"
+            android:textColor="#DD6E6F7A"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
