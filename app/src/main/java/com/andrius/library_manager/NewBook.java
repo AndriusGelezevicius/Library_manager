@@ -2,6 +2,7 @@ package com.andrius.library_manager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import com.andrius.database.BookData;
 import com.andrius.database.DataBase;
+
+import java.util.List;
 
 public class NewBook extends AppCompatActivity {
     Button saveBtn, cancelBtn;
@@ -48,12 +51,17 @@ public class NewBook extends AppCompatActivity {
                 DataBase dataBase = new DataBase(NewBook.this);
                 dataBase.addOneEntry(bookData);
                 Toast.makeText(NewBook.this, "" + bookData, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(NewBook.this, MainWindow.class);
+                startActivity(intent);
             }
         });
         
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DataBase dataBase = new DataBase(NewBook.this);
+                List<BookData> everyone = dataBase.getEveryone();
+                Toast.makeText(NewBook.this, "" + everyone.toString(), Toast.LENGTH_SHORT).show();
             }
         });
         
