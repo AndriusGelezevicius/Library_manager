@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.andrius.database.BookData;
+import com.andrius.database.DataBase;
+
 public class NewBook extends AppCompatActivity {
     Button saveBtn, cancelBtn;
     EditText et_title, et_author, et_genre, et_year, et_page, et_language, et_description;
@@ -33,14 +36,24 @@ public class NewBook extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(NewBook.this, "SAVE", Toast.LENGTH_SHORT).show();
+                BookData bookData = new BookData(
+                        et_title.getText().toString(),
+                        et_author.getText().toString(),
+                        et_genre.getText().toString(),
+                        et_language.getText().toString(),
+                        et_description.getText().toString(),
+                        Integer.parseInt(et_year.getText().toString()),
+                        Integer.parseInt(et_page.getText().toString())
+                );
+                DataBase dataBase = new DataBase(NewBook.this);
+                dataBase.addOneEntry(bookData);
+                Toast.makeText(NewBook.this, "" + bookData, Toast.LENGTH_SHORT).show();
             }
         });
         
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(NewBook.this, "CANCLE", Toast.LENGTH_SHORT).show();
             }
         });
         
