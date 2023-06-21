@@ -7,4 +7,9 @@
     <string name="genre">Genre</string>
     <string name="author_of_book">Author of book</string>
     <string name="title_of_book">Title of book</string>
+    <string name="textview">Title</string>
+    <string name="author">Author</string>
+    <string name="title">Title</string>
+    <string name="titleOfBook">Title</string>
+    <string name="authorOfBook">Author</string>
 </resources>
