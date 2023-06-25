@@ -1,6 +1,8 @@
 package com.andrius.library_manager;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,12 +10,21 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import com.andrius.database.BookAdapter;
+import com.andrius.database.BookData;
+import com.andrius.database.DataBase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 public class MainWindow extends AppCompatActivity {
     Animation rotateOpen, rotateClose, fromBottom, toBottom;
     FloatingActionButton addBtn, newBtn, searchBtn;
     private boolean clicked = false;
+
+    private RecyclerView recyclerView;
+    private BookAdapter bookAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +40,12 @@ public class MainWindow extends AppCompatActivity {
         newBtn = (FloatingActionButton) findViewById(R.id.newButton);
         searchBtn = (FloatingActionButton) findViewById(R.id.searchButton);
 
+        DataBase dataBase = new DataBase(this);
+        List<BookData> bookList = dataBase.getEveryone();
+        bookAdapter = new BookAdapter(bookList);
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(bookAdapter);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,9 +64,6 @@ public class MainWindow extends AppCompatActivity {
         });
     }
 
-
-
-
     private void onAddButtonClicked() {
         setVisibility(clicked);
         setAnimation();
@@ -61,7 +75,6 @@ public class MainWindow extends AppCompatActivity {
         }else{
             newBtn.setVisibility(View.INVISIBLE);
             searchBtn.setVisibility(View.INVISIBLE);
-
         }
         clicked = !isClicked;
     }

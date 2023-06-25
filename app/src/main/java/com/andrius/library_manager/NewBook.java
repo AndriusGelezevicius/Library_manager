@@ -45,7 +45,7 @@ public class NewBook extends AppCompatActivity {
                         et_genre.getText().toString(),
                         et_language.getText().toString(),
                         et_description.getText().toString(),
-                        Integer.parseInt(et_year.getText().toString()),
+                        Integer.parseInt(String.valueOf(et_year.getText())),
                         Integer.parseInt(et_page.getText().toString())
                 );
                 DataBase dataBase = new DataBase(NewBook.this);
