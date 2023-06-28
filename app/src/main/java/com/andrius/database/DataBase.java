@@ -1,11 +1,15 @@
 package com.andrius.database;
 
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -78,6 +82,7 @@ public class DataBase extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             //loop through the cursor and create new book objects.Put them into the return List
             do {
+                int id = cursor.getInt(0);
                 String bookTitle = cursor.getString(1);
                 String bookAuthor = cursor.getString(2);
                 String bookGenre = cursor.getString(3);
@@ -86,7 +91,7 @@ public class DataBase extends SQLiteOpenHelper {
                 String bookLanguage = cursor.getString(6);
                 String bookDescription = cursor.getString(7);
 
-                BookData newBookData = new BookData(bookTitle, bookAuthor, bookGenre, bookLanguage, bookDescription, bookYear, bookPage);
+                BookData newBookData = new BookData( id, bookTitle, bookAuthor, bookGenre, bookLanguage, bookDescription, bookYear, bookPage);
                 returnList.add(newBookData);
             }while(cursor.moveToNext());
         }else{
@@ -96,4 +101,30 @@ public class DataBase extends SQLiteOpenHelper {
         db.close();
         return returnList;
     }
+
+    public void deleteBook(int id) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String tableName = BOOKS_TABLE;
+//        String columnName = COLUMN_ID;
+//        String deleteQuery = "DELETE FROM " + tableName + " WHERE " + columnName + " = ?";
+//        String[] whereArgs = new String[]{String.valueOf(id)};
+//        db.execSQL(deleteQuery, whereArgs);
+//        db.close();
+
+//        SQLiteDatabase database = this.getWritableDatabase();
+//        database.execSQL("DELETE FROM " + BOOKS_TABLE + " WHERE " + COLUMN_ID + "= '" + id + "'");
+//        database.close();
+
+        SQLiteDatabase db = getWritableDatabase();
+        String tableName = BOOKS_TABLE;
+        String columnName = COLUMN_ID;
+        String selection = columnName + "=?";
+        String[] selectionArgs = { String.valueOf(id) }; // Add 1 to the position to match the ID value
+        db.delete(tableName, selection, selectionArgs);
+        db.close();
+
+    }
+
+
+
 }

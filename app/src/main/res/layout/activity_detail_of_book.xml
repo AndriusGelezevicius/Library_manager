@@ -4,6 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailOfBook">
+    tools:context=".DetailOfBook" android:background="@drawable/bg_project">
 
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="20dp"
+            android:paddingTop="30dp">
+            <TextView
+                android:padding="10dp"
+                android:text="@string/titleDisplay"
+                android:id="@+id/InsTitleField"
+                android:layout_marginLeft="10dp"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                tools:ignore="RtlSymmetry"
+                />
+            <TextView
+                android:text="@string/authorDisplay"
+                android:id="@+id/InsAuthorField"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/InsTitleField"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                tools:ignore="RtlSymmetry" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="20dp" >
+            <ImageView
+                android:id="@+id/imageButton"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/photo_book"
+                android:clickable="true"
+                android:background="@android:color/transparent" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/InsField"
+        android:layout_marginTop="140dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/InsGenreField"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="20dp"
+            android:text="Genre" />
+        <LinearLayout
+            android:id="@+id/numbersLayout"
+            android:layout_below="@id/InsGenreField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="20dp"
+            >
+            <TextView
+                android:id="@+id/InsYearField"
+                android:layout_width="170dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginRight="15dp"
+                android:paddingLeft="20dp"
+                android:text="Year published: "
+                />
+            <TextView
+                android:id="@+id/InsPageField"
+                android:layout_width="170dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:paddingLeft="20dp"
+                android:text="Page count: "
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_below="@id/numbersLayout"
+            android:id="@+id/InsLanguageField"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="20dp"
+            android:text="Language: "/>
+
+        <TextView
+            android:id="@+id/InsDescriptionField"
+            android:layout_below="@id/InsLanguageField"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="top"
+            android:padding="20dp"
+            android:text="Description: "/>
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="440dp"
+            android:layout_centerHorizontal="true"
+            android:text="delete" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

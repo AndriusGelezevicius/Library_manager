@@ -12,4 +12,8 @@
     <string name="title">Title</string>
     <string name="titleOfBook">Title</string>
     <string name="authorOfBook">Author</string>
+    <string name="titleDisplay">Title</string>
+    <string name="authorDisplay">Author</string>
+    <string name="Search">Search</string>
+    <string name="search">Search</string>
 </resources>

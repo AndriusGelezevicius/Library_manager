@@ -1,22 +1,51 @@
 package com.andrius.database;
 
-public class BookData {
-    private String title;
-    private String author;
-    private String genre;
-    private String language;
-    private String description;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = Book.ENTITY_BOOK_TABLE)
+public class Book {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @PrimaryKey(autoGenerate = true)
     private int id;
+
+    @ColumnInfo(name = "BOOK_TITLE")
+    private String title;
+    @ColumnInfo(name = "BOOK_AUTHOR")
+    private String author;
+    @ColumnInfo(name = "BOOK_GENRE")
+    private String genre;
+    @ColumnInfo(name = "BOOK_LANGUAGE")
+    private String language;
+    @ColumnInfo(name = "BOOK_DESCRIPTION")
+    private String description;
+    @ColumnInfo(name = "BOOK_YEAR")
     private int year;
+    @ColumnInfo(name = "BOOK_PAGE")
     private int page;
 
-    public BookData(
-            int id,
+    @Ignore
+    public static final String ENTITY_BOOK_TABLE = "BOOK_TABLE";
+
+
+    public Book(
             String title,
             String author,
-            String genre, String language, String description, int year, int page
+            String genre,
+            String language,
+            String description,
+            int year,
+            int page
     ) {
-        this.id = id;
         this.title = title;
         this.author = author;
         this.genre = genre;

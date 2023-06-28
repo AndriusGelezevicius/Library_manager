@@ -10,15 +10,26 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.andrius.database.Book;
+import com.andrius.database.BookDao;
 import com.andrius.database.BookData;
 import com.andrius.database.DataBase;
+import com.andrius.database.MainDatabase;
+
 
 import java.util.List;
 
 public class NewBook extends AppCompatActivity {
-    Button saveBtn, cancelBtn;
-    EditText et_title, et_author, et_genre, et_year, et_page, et_language, et_description;
-    ImageButton imageBtn;
+    private Button saveBtn;
+    private Button cancelBtn;
+    private EditText et_title;
+    private EditText et_author;
+    private EditText et_genre;
+    private EditText et_year;
+    private EditText et_page;
+    private EditText et_language;
+    private EditText et_description;
+    private ImageButton imageBtn;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +50,7 @@ public class NewBook extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BookData bookData = new BookData(
+                Book book = new Book(
                         et_title.getText().toString(),
                         et_author.getText().toString(),
                         et_genre.getText().toString(),
@@ -48,20 +59,18 @@ public class NewBook extends AppCompatActivity {
                         Integer.parseInt(String.valueOf(et_year.getText())),
                         Integer.parseInt(et_page.getText().toString())
                 );
-                DataBase dataBase = new DataBase(NewBook.this);
-                dataBase.addOneEntry(bookData);
-                Toast.makeText(NewBook.this, "" + bookData, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(NewBook.this, MainWindow.class);
-                startActivity(intent);
+//                DataBase dataBase = new DataBase(NewBook.this);
+//                dataBase.addOneEntry(bookData);
+                BookDao bookDao = MainDatabase.getInstance(getApplicationContext()).bookDao();
+                bookDao.insertBook(book);
+                finish();
             }
         });
         
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DataBase dataBase = new DataBase(NewBook.this);
-                List<BookData> everyone = dataBase.getEveryone();
-                Toast.makeText(NewBook.this, "" + everyone.toString(), Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
         
